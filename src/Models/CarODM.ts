@@ -11,6 +11,7 @@ class CarODM extends AbstractODM<ICar> {
       buyValue: { type: Number, required: true },
       doorsQty: { type: Number, required: true },
       seatsQty: { type: Number, required: true },
+      status: { type: Boolean },
     });
     super(schema, 'Car');
   }

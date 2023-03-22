@@ -11,6 +11,8 @@ class ErrorHandler {
     switch (name) {
       case 'NOT_FOUND':
         return res.status(404).json({ message });
+      case 'UNPROCESSABLE_ENTITY':
+        return res.status(422).json({ message });
       default:
         return res.status(500).json({ message });
     }

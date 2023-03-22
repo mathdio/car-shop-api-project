@@ -15,6 +15,13 @@ class CarController {
     this.service = new CarService();
   }
 
+  public static isValidId(value: string): boolean {
+    if (value.length !== 24) {
+      return false;
+    }
+    return true;
+  }
+
   public async create() {
     const car: ICar = {
       model: this.req.body.model,
@@ -42,6 +49,12 @@ class CarController {
   public async findById() {
     try {
       const { id } = this.req.params;
+      if (!CarController.isValidId(id)) {
+        const error = new Error('Invalid mongo id');
+        error.name = 'UNPROCESSABLE_ENTITY';
+        throw error;
+      }
+
       const car = await this.service.findById(id);
       return this.res.status(200).json(car);
     } catch (error) {
