@@ -15,11 +15,12 @@ class CarController {
     this.service = new CarService();
   }
 
-  public static isValidId(value: string): boolean {
+  public static isValidId(value: string) {
     if (value.length !== 24) {
-      return false;
+      const error = new Error('Invalid mongo id');
+      error.name = 'UNPROCESSABLE_ENTITY';
+      throw error;
     }
-    return true;
   }
 
   public async create() {
@@ -49,11 +50,7 @@ class CarController {
   public async findById() {
     try {
       const { id } = this.req.params;
-      if (!CarController.isValidId(id)) {
-        const error = new Error('Invalid mongo id');
-        error.name = 'UNPROCESSABLE_ENTITY';
-        throw error;
-      }
+      CarController.isValidId(id);
 
       const car = await this.service.findById(id);
       return this.res.status(200).json(car);
@@ -65,11 +62,7 @@ class CarController {
   public async update() {
     try {
       const { id } = this.req.params;
-      if (!CarController.isValidId(id)) {
-        const error = new Error('Invalid mongo id');
-        error.name = 'UNPROCESSABLE_ENTITY';
-        throw error;
-      }
+      CarController.isValidId(id);
       const car = { ...this.req.body };
       const updatedCar = await this.service.update(id, car);
       return this.res.status(200).json(updatedCar);

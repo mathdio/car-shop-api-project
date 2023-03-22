@@ -15,6 +15,14 @@ class MotorcycleController {
     this.service = new MotorcycleService();
   }
 
+  public static isValidId(value: string) {
+    if (value.length !== 24) {
+      const error = new Error('Invalid mongo id');
+      error.name = 'UNPROCESSABLE_ENTITY';
+      throw error;
+    }
+  }
+
   public async create() {
     const motorcycle: IMotorcycle = {
       model: this.req.body.model,
@@ -29,6 +37,22 @@ class MotorcycleController {
     try {
       const newMotorcycle = await this.service.create(motorcycle);
       return this.res.status(201).json(newMotorcycle);
+    } catch (error) {
+      this.next(error);
+    }
+  }
+
+  public async find() {
+    const motorcycles = await this.service.find();
+    return this.res.status(200).json(motorcycles);
+  }
+
+  public async findById() {
+    try {
+      const { id } = this.req.params;
+      MotorcycleController.isValidId(id);
+      const motorcycle = await this.service.findById(id);
+      return this.res.status(200).json(motorcycle);
     } catch (error) {
       this.next(error);
     }
