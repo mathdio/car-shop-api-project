@@ -4,7 +4,7 @@ export default class Vehicle {
   protected year: number;
   protected color: string;
   protected buyValue: number;
-  protected status?: boolean;
+  protected status: boolean;
 
   constructor(
     model: string,
@@ -12,13 +12,14 @@ export default class Vehicle {
     color: string,
     buyValue: number,
     id: string | undefined,
+    status?: boolean,
   ) {
     this.model = model;
     this.year = year;
     this.color = color;
     this.buyValue = buyValue;
-    this.status = false;
     this.id = id;
+    this.status = status || false;
   }
 
   public getId() {
@@ -61,7 +62,11 @@ export default class Vehicle {
     this.buyValue = value;
   }
 
-  // getStatus(): boolean {
-  //   return this.status;
-  // }
+  public getStatus() {
+    return this.status;
+  }
+
+  public setStatus(value: boolean) {
+    this.status = value;
+  }
 }

@@ -23,11 +23,27 @@ class CarController {
       buyValue: this.req.body.buyValue,
       doorsQty: this.req.body.doorsQty,
       seatsQty: this.req.body.seatsQty,
+      status: this.req.body.status,
     };
 
     try {
       const newCar = await this.service.create(car);
       return this.res.status(201).json(newCar);
+    } catch (error) {
+      this.next(error);
+    }
+  }
+
+  public async find() {
+    const allCars = await this.service.find();
+    return this.res.status(200).json(allCars);
+  }
+
+  public async findById() {
+    try {
+      const { id } = this.req.params;
+      const car = await this.service.findById(id);
+      return this.res.status(200).json(car);
     } catch (error) {
       this.next(error);
     }
