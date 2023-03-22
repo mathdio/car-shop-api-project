@@ -1,64 +1,64 @@
-import IVehicle from '../Interfaces/IVehicle';
-
-export default class Vehicle implements IVehicle {
-  protected _id: string | undefined;
-  protected _model: string;
-  protected _year: number;
-  protected _color: string;
-  protected _buyValue: number;
-  protected _status?: boolean;
+export default class Vehicle {
+  protected id: string | undefined;
+  protected model: string;
+  protected year: number;
+  protected color: string;
+  protected buyValue: number;
+  protected status?: boolean;
 
   constructor(
     model: string,
     year: number,
     color: string,
     buyValue: number,
+    id: string | undefined,
   ) {
-    this._model = model;
-    this._year = year;
-    this._color = color;
-    this._buyValue = buyValue;
-    this._status = false;
+    this.model = model;
+    this.year = year;
+    this.color = color;
+    this.buyValue = buyValue;
+    this.status = false;
+    this.id = id;
   }
 
   public getId() {
-    return this._id;
+    return this.id;
   }
 
-  public set id(value: string) {
-    this._id = value;
+  public setId(value: string) {
+    this.id = value;
   }
 
-  public get model(): string {
-    return this._model;
+  public getModel(): string {
+    return this.model;
   }
 
-  public set model(value: string) {
-    this._model = value;
+  public setModel(value: string) {
+    this.model = value;
   }
 
-  public get year(): number {
-    return this._year;
+  public getYear(): number {
+    return this.year;
   }
 
-  public set year(value: number) {
-    this._year = value;
+  public setYear(value: number) {
+    this.year = value;
   }
 
-  public get color(): string {
-    return this._color;
+  public getColor(): string {
+    return this.color;
   }
 
-  public set color(value: string) {
-    this._color = value;
+  public setColor(value: string) {
+    this.color = value;
   }
 
-  public get buyValue(): number {
-    return this._buyValue;
+  public getBuyValue(): number {
+    return this.buyValue;
   }
 
-  public set buyValue(value: number) {
-    this._buyValue = value;
+  public setBuyValue(value: number) {
+    this.buyValue = value;
   }
 
   // getStatus(): boolean {
