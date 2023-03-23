@@ -10,6 +10,12 @@ class MotorcycleService {
     return null;
   }
 
+  public static idNotFoundError() {
+    const error = new Error('Motorcycle not found');
+    error.name = 'NOT_FOUND';
+    throw error;
+  }
+
   public async create(motorcycle: IMotorcycle) {
     const motorcycleODM = new MotorcycleODM();
     const newMotorcycle = await motorcycleODM.create(motorcycle);
@@ -27,12 +33,15 @@ class MotorcycleService {
   public async findById(id: string) {
     const motorcycleODM = new MotorcycleODM();
     const motorcycle = await motorcycleODM.findById(id);
-    if (!motorcycle) {
-      const error = new Error('Motorcycle not found');
-      error.name = 'NOT_FOUND';
-      throw error;
-    }
+    if (!motorcycle) MotorcycleService.idNotFoundError();
     return this.createMotorcycleDomain(motorcycle);
+  }
+
+  public async update(id: string, motorcycle: IMotorcycle) {
+    const motorcycleODM = new MotorcycleODM();
+    const updatedMotorcycle = await motorcycleODM.update(id, motorcycle);
+    if (!updatedMotorcycle) MotorcycleService.idNotFoundError();
+    return this.createMotorcycleDomain(updatedMotorcycle);
   }
 }
 
