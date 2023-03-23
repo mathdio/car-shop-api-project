@@ -104,8 +104,7 @@ describe('Car Service tests', function () {
       doorsQty: 2,
       seatsQty: 5,
     });
-    sinon.stub(Model, 'findById').resolves(outputUpdatedCar);
-    sinon.stub(Model, 'findByIdAndUpdate').resolves();
+    sinon.stub(Model, 'findByIdAndUpdate').resolves(outputUpdatedCar);
 
     const carService = new CarService();
     const result = await carService.update(inputId, inputCar);
@@ -123,7 +122,7 @@ describe('Car Service tests', function () {
       doorsQty: 2,
       seatsQty: 5,
     };
-    sinon.stub(Model, 'findById').resolves(null);
+    sinon.stub(Model, 'findByIdAndUpdate').resolves(null);
 
     try {
       const carService = new CarService();
