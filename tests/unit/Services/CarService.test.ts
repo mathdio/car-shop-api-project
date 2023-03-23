@@ -30,4 +30,21 @@ describe('Car Service tests', function () {
     const result = await carService.create(inputCar);
     expect(result).to.deep.equal(outputCar);
   });
+
+  it('Tests if it returns a list of cars', async function () {
+    const outputList: Car[] = [new Car({
+      model: 'Marea',
+      year: 2002,
+      color: 'Black',
+      status: true,
+      buyValue: 15.990,
+      doorsQty: 4,
+      seatsQty: 5,
+    })];
+    sinon.stub(Model, 'find').resolves(outputList);
+
+    const carService = new CarService();
+    const result = await carService.find();
+    expect(result).to.deep.equal(outputList);
+  });
 });
