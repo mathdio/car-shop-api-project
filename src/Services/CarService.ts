@@ -48,6 +48,7 @@ class CarService {
     const carODM = new CarODM();
     const deleted = await carODM.delete(id);
     if (!deleted) CarService.idNotFoundError();
+    return deleted;
   }
 }
 

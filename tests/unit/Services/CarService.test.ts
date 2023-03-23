@@ -131,4 +131,23 @@ describe('Car Service tests', function () {
       expect((error as Error).message).to.be.equal('Car not found');
     }
   });
+
+  it('Tests if it deletes a car', async function () {
+    const inputId = '6348513f34c397abcad040b2';
+    const outputCar: Car = new Car({
+      id: '6348513f34c397abcad040b2',
+      model: 'Marea',
+      year: 2002,
+      color: 'Black',
+      status: true,
+      buyValue: 15.990,
+      doorsQty: 4,
+      seatsQty: 5,
+    });
+    sinon.stub(Model, 'findByIdAndDelete').resolves(outputCar);
+
+    const carService = new CarService();
+    const result = await carService.delete(inputId);    
+    expect(result).to.deep.equal(outputCar);
+  });
 });

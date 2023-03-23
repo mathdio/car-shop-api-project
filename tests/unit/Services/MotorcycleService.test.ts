@@ -41,4 +41,13 @@ describe('Motorcycle Service tests', function () {
     const result = await motorcycleService.findById(inputId);
     expect(result).to.deep.equal(outputMotorcycle);
   });
+
+  it('Tests if it deletes a motorcycle', async function () {
+    const inputId = '6348513f34c397abcad040b2';
+    sinon.stub(Model, 'findByIdAndDelete').resolves(outputMotorcycle);
+
+    const motorcycleService = new MotorcycleService();
+    const result = await motorcycleService.delete(inputId);   
+    expect(result).to.deep.equal(outputMotorcycle);
+  });
 });

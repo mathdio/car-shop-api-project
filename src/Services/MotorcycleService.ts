@@ -48,6 +48,7 @@ class MotorcycleService {
     const motorcycleODM = new MotorcycleODM();
     const deleted = await motorcycleODM.delete(id);
     if (!deleted) MotorcycleService.idNotFoundError();
+    return deleted;
   }
 }
 
