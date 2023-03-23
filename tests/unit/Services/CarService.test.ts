@@ -5,6 +5,10 @@ import Car from '../../../src/Domains/Car';
 import CarService from '../../../src/Services/CarService';
 
 describe('Car Service tests', function () {
+  afterEach(function () {
+    sinon.restore();
+  });
+  
   it('Tests if it creates a car with success', async function () {
     const inputCar = {
       model: 'Marea',
@@ -64,5 +68,17 @@ describe('Car Service tests', function () {
     const carService = new CarService();
     const result = await carService.findById(inputId);
     expect(result).to.deep.equal(outputCar);
+  });
+
+  it('Tests if it returns an "Car not found" error', async function () {
+    const inputId = 'invalid_id';
+    sinon.stub(Model, 'findById').resolves(null);
+
+    try {
+      const carService = new CarService();
+      await carService.findById(inputId);
+    } catch (error) {
+      expect((error as Error).message).to.be.equal('Car not found');
+    }
   });
 });
