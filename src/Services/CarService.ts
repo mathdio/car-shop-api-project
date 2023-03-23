@@ -10,6 +10,12 @@ class CarService {
     return null;
   }
 
+  public static idNotFoundError() {
+    const error = new Error('Car not found');
+    error.name = 'NOT_FOUND';
+    throw error;
+  }
+
   public async create(car: ICar) {
     const carODM = new CarODM();
     const newCar = await carODM.create(car);
@@ -26,11 +32,7 @@ class CarService {
   public async findById(id: string) {
     const carODM = new CarODM();
     const car = await carODM.findById(id);
-    if (!car) {
-      const error = new Error('Car not found');
-      error.name = 'NOT_FOUND';
-      throw error;
-    }
+    if (!car) CarService.idNotFoundError();
 
     return this.createCarDomain(car);
   }
@@ -38,12 +40,14 @@ class CarService {
   public async update(id: string, car: ICar) {
     const carODM = new CarODM();
     const updatedCar = await carODM.update(id, car);
-    if (!updatedCar) {
-      const error = new Error('Car not found');
-      error.name = 'NOT_FOUND';
-      throw error;
-    }
+    if (!updatedCar) CarService.idNotFoundError();
     return this.createCarDomain(updatedCar);
+  }
+
+  public async delete(id: string) {
+    const carODM = new CarODM();
+    const deleted = await carODM.delete(id);
+    if (!deleted) CarService.idNotFoundError();
   }
 }
 

@@ -43,6 +43,12 @@ class MotorcycleService {
     if (!updatedMotorcycle) MotorcycleService.idNotFoundError();
     return this.createMotorcycleDomain(updatedMotorcycle);
   }
+
+  public async delete(id: string) {
+    const motorcycleODM = new MotorcycleODM();
+    const deleted = await motorcycleODM.delete(id);
+    if (!deleted) MotorcycleService.idNotFoundError();
+  }
 }
 
 export default MotorcycleService;
