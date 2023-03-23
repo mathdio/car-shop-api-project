@@ -71,7 +71,7 @@ describe('Car Service tests', function () {
     expect(result).to.deep.equal(outputCar);
   });
 
-  it('Tests if it returns an "Car not found" error', async function () {
+  it('Tests if it returns an "Car not found" error (findById function)', async function () {
     const inputId = 'invalid_id';
     sinon.stub(Model, 'findById').resolves(null);
 
@@ -110,5 +110,26 @@ describe('Car Service tests', function () {
     const carService = new CarService();
     const result = await carService.update(inputId, inputCar);
     expect(result).to.deep.equal(outputUpdatedCar);
+  });
+
+  it('Tests if it returns an "Car not found" error (update function)', async function () {
+    const inputId = 'invalid_id';
+    const inputCar: ICar = {
+      model: 'Marea',
+      year: 1992,
+      color: 'Red',
+      status: true,
+      buyValue: 12.000,
+      doorsQty: 2,
+      seatsQty: 5,
+    };
+    sinon.stub(Model, 'findById').resolves(null);
+
+    try {
+      const carService = new CarService();
+      await carService.update(inputId, inputCar);
+    } catch (error) {
+      expect((error as Error).message).to.be.equal('Car not found');
+    }
   });
 });
