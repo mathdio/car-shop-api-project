@@ -51,5 +51,6 @@ In container's bash, run:
 ```
 npm run dev
 ```
+### 🛣️ Available routes:
 
 
