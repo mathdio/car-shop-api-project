@@ -22,7 +22,7 @@ To start up the application, follow the next steps:
 As the project is containerized, to run the application you will need to install both softwares. The Docker Compose version supported by the project is 1.29 or higher. You can see [here](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04-pt) or in the [docs](https://docs.docker.com/compose/install/) how to install it.
 
 ### 🌱 Defining enviroment variables:
-In project's root, create a `.env` file with the following content:
+In project root, create a `.env` file with the following content:
 ```
 MONGO_DB_URL=mongodb://localhost:27017/CarShop
 ```
