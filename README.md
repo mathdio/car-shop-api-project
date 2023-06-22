@@ -31,6 +31,10 @@ In project root, run:
 ```
 docker-compose up -d
 ```
+You can remove the containers running:
+```
+docker-compose down
+```
 ### ⬇️ Installing the dependencies
 In project root, run:
 ```
@@ -38,7 +42,7 @@ docker exec -it car_shop bash
 ```
 In container's bash, run:
 ```
-npm install
+npm run dev
 ```
 
 
