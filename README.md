@@ -57,6 +57,8 @@ npm run dev
 To use the API services you will can use a web browser or a client for testing APIs, like [Thunder Client](https://www.thunderclient.com) or [Insomnia](https://insomnia.rest/download).
 The API endpoints are listed in the table below, as well as some examples of request body before the table.
 The default database is empty, so you will need first to seed some data with the first endpoint below.
+> You will need database IDs to use some endpoints. MongoDB generate random IDs, thus after registering some data, you will need to consult it in database, which can be done in terminal or using some extension as [MongoDB for VS Code](https://www.mongodb.com/products/vs-code)
+
 Request body example to register or update a car:
 ```
 {
