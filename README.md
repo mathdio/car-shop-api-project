@@ -51,6 +51,16 @@ In container's bash, run:
 ```
 npm run dev
 ```
-### 🛣️ Available routes:
-
+## 🛣️ Available endpoints:
+To use the API services you will can use a web browser or a client for testing APIs, like [Thunder Client](https://www.thunderclient.com) or [Insomnia](https://insomnia.rest/download).
+The API endpoints are listed below, as well as some examples of request body.
+The default database is empty, so you will need first to seed some data with the first endpoint below.
+| Service | Method | Endpoint |
+|  :---:  | :----: | :------: |
+| Register a car | POST | http://localhost:3001/cars |
+<!-- ### 🔸 Registering a car:
+- POST method. Route:
+```
+http://localhost:3001/cars -->
+```
 
