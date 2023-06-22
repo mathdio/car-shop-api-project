@@ -2,7 +2,7 @@
 A car dealership management RESTful API developed as a [Trybe](https://www.betrybe.com/) Project
 
 ## 💻 About this project
-This application is a RESTful CRUD API to car dealership management applying Object-Oriented Programming principles.
+This application is a RESTful CRUD API to car dealership management applying Object-Oriented Programming principles. The services are create, list all, list specific, update specific and delete specific car or motorcycle. The API also has some unit tests implemented.
 
 ## 🛠️ Built with
 <a href="https://www.chaijs.com" target="_blank" rel="noreferrer"><img src="https://img.shields.io/badge/chai.js-323330?style=for-the-badge&logo=chai&logoColor=red" alt="Chai.js" /></a>
