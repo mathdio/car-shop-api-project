@@ -26,3 +26,19 @@ In project root, create a `.env` file with the following content:
 ```
 MONGO_DB_URL=mongodb://localhost:27017/CarShop
 ```
+### 📦 Creating and starting the application's containers:
+In project root, run:
+```
+docker-compose up -d
+```
+### ⬇️ Installing the dependencies
+In project root, run:
+```
+docker exec -it car_shop bash
+```
+In container's bash, run:
+```
+npm install
+```
+
+
