@@ -34,6 +34,7 @@ In project root, create a `.env` file with the following content:
 MONGO_DB_URL=mongodb://localhost:27017/CarShop
 ```
 ### 📦 Creating and starting the application's containers:
+Two Docker containers must be created in the process. The container with MongoDB service must be named as `car_shop_db` and the container with back-end service must be named as `car_shop`.
 In project root, run:
 ```
 docker-compose up -d
@@ -43,7 +44,8 @@ You can remove the containers running:
 docker-compose down
 ```
 ### ⬇️ Installing the dependencies
-In project root, run:
+You will need to execute `car_shop` container bash inside it.
+For it, in project root, run:
 ```
 docker exec -it car_shop bash
 ```
@@ -79,7 +81,7 @@ Request body example to register or update a motorcycle:
   "engineCapacity": 600
 }
 ```
-
+Services and endpoints:
 | Service | Method | Endpoint |
 |  :---:  | :----: | :------: |
 | Register a car | POST | http://localhost:3001/cars |
@@ -94,6 +96,16 @@ Request body example to register or update a motorcycle:
 | Delete specific motorcycle | DELETE | http://localhost:3001/motorcycles/:id |
 
 
-
-
-
+## 🧪 Testing:
+For testing, optionally, you can stop `car_shop_db` container, by running in a terminal:
+```
+docker stop car_shop_db
+```
+To execute the tests, in `car_shop` container's bash, run:
+```
+npm run test:mocha
+```
+To execute the tests and see a coverage summary table, run:
+```
+npm run test:coverage
+```
