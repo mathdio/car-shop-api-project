@@ -53,14 +53,47 @@ npm run dev
 ```
 ## 🛣️ Available endpoints:
 To use the API services you will can use a web browser or a client for testing APIs, like [Thunder Client](https://www.thunderclient.com) or [Insomnia](https://insomnia.rest/download).
-The API endpoints are listed below, as well as some examples of request body.
+The API endpoints are listed in the table below, as well as some examples of request body before the table.
 The default database is empty, so you will need first to seed some data with the first endpoint below.
+Request body example to register or update a car:
+```
+{
+  "model": "Marea",
+  "year": 2002,
+  "color": "Black",
+  "status": true,
+  "buyValue": 15.990,
+  "doorsQty": 4,
+  "seatsQty": 5
+}
+```
+Request body example to register or update a motorcycle:
+```
+{
+  "model": "Honda Cb 600f Hornet",
+  "year": 2005,
+  "color": "Yellow",
+  "status": true,
+  "buyValue": 30.000,
+  "category": "Street",
+  "engineCapacity": 600
+}
+```
+
 | Service | Method | Endpoint |
 |  :---:  | :----: | :------: |
 | Register a car | POST | http://localhost:3001/cars |
-<!-- ### 🔸 Registering a car:
-- POST method. Route:
-```
-http://localhost:3001/cars -->
-```
+| List all cars | GET | http://localhost:3001/cars |
+| List specific car | GET | http://localhost:3001/cars/:id |
+| Update specific car | PUT | http://localhost:3001/cars/:id |
+| Delete specific car | DELETE | http://localhost:3001/cars/:id |
+| Register a motorcycle | POST | http://localhost:3001/motorcycles |
+| List all motorcycles | GET | http://localhost:3001/motorcycles |
+| List specific motorcycle | GET | http://localhost:3001/motorcycles/:id |
+| Update specific motorcycle | PUT | http://localhost:3001/motorcycles/:id |
+| Delete specific motorcycle | DELETE | http://localhost:3001/motorcycles/:id |
+
+
+
+
 
