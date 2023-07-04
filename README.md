@@ -33,7 +33,7 @@ In project root, create a `.env` file with the following content:
 ```
 MONGO_DB_URL=mongodb://localhost:27017/CarShop
 ```
-### 📦 Creating and starting the application's containers:
+### 📦 Creating and starting the application's containers
 Two Docker containers must be created in the process. The container with MongoDB service must be named as `car_shop_db` and the container with back-end service must be named as `car_shop`.
 In project root, run:
 ```
@@ -53,7 +53,7 @@ In container's bash, run:
 ```
 npm run dev
 ```
-## 🛣️ Available endpoints:
+## 🛣️ Available endpoints
 To use the API services you will can use a web browser or a client for testing APIs, like [Thunder Client](https://www.thunderclient.com) or [Insomnia](https://insomnia.rest/download).
 The API endpoints are listed in the table below, as well as some examples of request body before the table.
 The default database is empty, so you will need first to seed some data with the first endpoint below.
@@ -98,7 +98,7 @@ Services and endpoints:
 | Delete specific motorcycle | DELETE | http://localhost:3001/motorcycles/:id |
 
 
-## 🧪 Testing:
+## 🧪 Testing
 For testing, optionally, you can stop `car_shop_db` container, by running in a terminal:
 ```
 docker stop car_shop_db
